@@ -1,0 +1,660 @@
+/* =========================================================
+   ハウジング万博 2026 共通スタイル
+   HTML/CSS/JavaScriptの役割が見えやすいように、
+   セクションごとにコメントを分けています。
+========================================================= */
+
+/* ---------- 基本設定 ---------- */
+:root {
+  --mint: #c7fbdc;
+  --mint-strong: #5ed88f;
+  --cream: #fffdf5;
+  --brown: #8b3f3f;
+  --text: #3f3838;
+  --red: #ff4f4f;
+  --orange: #f7a928;
+  --green: #53bf57;
+  --blue: #5654ff;
+  --pink: #d547d3;
+  --soft-pink: #ff8dcc;
+  --lavender: #efd2ff;
+  --shadow: 0 8px 0 rgba(124, 75, 52, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  line-height: 1.8;
+  background-color: var(--cream);
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site {
+  min-height: 100vh;
+}
+
+.inner {
+  width: min(100% - 40px, 960px);
+  margin: 0 auto;
+}
+
+/* ---------- 紙面風の共通背景 ---------- */
+.paper-bg {
+  background-color: var(--cream);
+  background-image: repeating-linear-gradient(
+    -28deg,
+    rgba(244, 193, 102, 0.16) 0,
+    rgba(244, 193, 102, 0.16) 1px,
+    transparent 1px,
+    transparent 48px
+  );
+  position: relative;
+}
+
+.paper-bg::before {
+  content: "HOUSING EXPO 2026";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  color: rgba(236, 188, 96, 0.34);
+  font-family: Georgia, serif;
+  font-size: clamp(11px, 2.4vw, 17px);
+  letter-spacing: 0.08em;
+  line-height: 4.6;
+  transform: rotate(-28deg);
+  transform-origin: center;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.paper-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- ボタン ---------- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 58px;
+  padding: 12px 30px;
+  border-radius: 22px;
+  color: #fff;
+  font-weight: 800;
+  line-height: 1.35;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(3px);
+  box-shadow: 0 5px 0 rgba(124, 75, 52, 0.18);
+  filter: brightness(1.03);
+}
+
+.button-red {
+  background: linear-gradient(180deg, #ff1b1b 0%, #ff6b00 100%);
+}
+
+.button-green {
+  background: linear-gradient(180deg, #18c522 0%, #0e9a18 100%);
+}
+
+.button-pink {
+  background: linear-gradient(180deg, #ff9bd3 0%, #ff74be 100%);
+}
+
+/* ---------- JavaScriptで付け外しする表示アニメーション ---------- */
+.fade-ready {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+
+.fade-ready.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- フッター ---------- */
+.footer {
+  padding: 22px 18px;
+  color: #fff;
+  background: #050505;
+  font-size: 10px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* =========================================================
+   index.html
+========================================================= */
+
+/* ---------- ヒーローエリア ---------- */
+.top-hero {
+  min-height: 100svh;
+  padding: 48px 0 22px;
+  background: var(--mint) url("../imgs/index/hero01.svg") center top / cover no-repeat;
+  text-align: center;
+  display: grid;
+  align-items: center;
+}
+
+.hero-copy {
+  margin: 0 0 12px;
+  color: var(--brown);
+  font-size: clamp(15px, 4vw, 23px);
+  font-weight: 800;
+}
+
+.hero-logo {
+  width: min(82vw, 460px);
+  margin: 0 auto 18px;
+}
+
+.event-date {
+  width: min(60vw, 260px);
+  margin: 0 auto 28px;
+  padding: 12px;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.2);
+  font-weight: 800;
+  line-height: 1.3;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.16);
+}
+
+.scroll-hint {
+  margin-top: 28px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.scroll-hint::before {
+  content: "";
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: 0 auto 4px;
+  border-right: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  transform: rotate(45deg);
+}
+
+/* ---------- 画像スライド帯 ---------- */
+.slide-strip {
+  overflow: hidden;
+  border-block: 4px solid #111;
+  background: #111;
+}
+
+.slide-track {
+  display: flex;
+  width: max-content;
+  animation: slideLoop 30s linear infinite;
+}
+
+.slide-track img {
+  width: 120px;
+  height: 68px;
+  object-fit: cover;
+  border-right: 3px solid #111;
+}
+
+@keyframes slideLoop {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- ウェルカム文と概要 ---------- */
+.welcome {
+  padding: 80px 0 64px;
+  overflow: hidden;
+}
+
+.garland {
+  height: 92px;
+  margin-bottom: 56px;
+  background:
+    url("../imgs/index/flagleft.svg") left top / 46% auto no-repeat,
+    url("../imgs/index/flagright.svg") right top / 46% auto no-repeat;
+}
+
+.welcome-title {
+  color: var(--brown);
+  font-size: clamp(36px, 11vw, 76px);
+  line-height: 1.45;
+  text-align: center;
+  letter-spacing: 0;
+}
+
+.town-arc {
+  height: 132px;
+  margin: 34px -40px 0;
+  background: url("../imgs/index/hero02.svg") center bottom / contain no-repeat;
+}
+
+.section-title {
+  margin: 0 0 28px;
+  color: var(--brown);
+  line-height: 1.4;
+  text-align: center;
+}
+
+.section-title span {
+  display: block;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.section-title small {
+  display: block;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+
+.about {
+  padding: 58px 0 78px;
+  border-top: 4px solid #70ff74;
+}
+
+.about-text {
+  width: min(100%, 620px);
+  margin: 0 auto;
+  font-size: 17px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.about-text p {
+  margin: 0 0 28px;
+}
+
+.about-action {
+  margin-top: 26px;
+  text-align: center;
+}
+
+/* ---------- スタッフ紹介 ---------- */
+.staff {
+  padding: 96px 0 130px;
+  background: var(--mint) url("../imgs/index/hero02.svg") center bottom / 100% auto no-repeat;
+}
+
+.staff-panel {
+  width: min(100%, 560px);
+  margin: 0 auto;
+  padding: 72px 24px 96px;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 50% 50% 42% 42% / 22% 22% 18% 18%;
+  text-align: center;
+}
+
+.staff-list {
+  list-style: none;
+  margin: 26px 0 0;
+  padding: 0;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 2.05;
+}
+
+/* =========================================================
+   select.html
+========================================================= */
+.select-page {
+  min-height: calc(100vh - 62px);
+  padding: 72px 0 58px;
+}
+
+.select-title {
+  margin: 0 0 34px;
+  color: var(--brown);
+  font-size: clamp(18px, 5vw, 28px);
+  text-align: center;
+}
+
+.day-select-list {
+  display: grid;
+  gap: 34px;
+  width: min(100%, 470px);
+  margin: 0 auto 58px;
+}
+
+.day-button {
+  min-height: 72px;
+  border-radius: 18px;
+  color: #fff;
+  font-size: clamp(22px, 6vw, 34px);
+  font-weight: 900;
+  box-shadow: var(--shadow);
+}
+
+.day-button:nth-child(1) {
+  background: var(--red);
+}
+
+.day-button:nth-child(2) {
+  background: var(--orange);
+}
+
+.day-button:nth-child(3) {
+  background: var(--green);
+}
+
+.day-button:nth-child(4) {
+  background: var(--blue);
+}
+
+.day-button:nth-child(5) {
+  background: var(--pink);
+}
+
+.select-back {
+  text-align: center;
+}
+
+/* =========================================================
+   day-01.html から day-05.html まで共通
+========================================================= */
+.day-hero {
+  min-height: 250px;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.58)),
+    var(--day-hero-image, url("../imgs/day1/001hitoyo.webp")) center / cover no-repeat;
+}
+
+.youtube-placeholder {
+  width: 118px;
+  height: 82px;
+  border: 0;
+  background: #ff3434;
+  color: #fff;
+  clip-path: inset(0 round 0);
+  position: relative;
+}
+
+.youtube-placeholder::before {
+  content: "";
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-36%, -50%);
+  border-top: 18px solid transparent;
+  border-bottom: 18px solid transparent;
+  border-left: 30px solid #fff;
+}
+
+.day-intro {
+  padding: 44px 0 36px;
+  text-align: center;
+}
+
+.catalog-title {
+  margin: 0 0 6px;
+  color: var(--brown);
+  font-size: clamp(22px, 7vw, 34px);
+}
+
+.catalog-lead {
+  margin: 0 0 28px;
+  color: var(--brown);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.exhibitor-index {
+  display: grid;
+  gap: 12px;
+  width: min(100%, 520px);
+  margin: 0 auto 26px;
+  padding: 0;
+  list-style: none;
+}
+
+.exhibitor-index a {
+  display: grid;
+  grid-template-columns: 50px 1fr 84px;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow: 0 2px 0 rgba(139, 63, 63, 0.12);
+}
+
+.index-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #ffe0f1;
+}
+
+.index-text {
+  min-width: 0;
+  color: var(--brown);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.35;
+  text-align: left;
+}
+
+.index-text strong {
+  display: block;
+  color: #774242;
+  font-size: 14px;
+}
+
+.index-thumb {
+  width: 84px;
+  height: 42px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.exhibitor-index .avatar-placeholder {
+  width: 46px;
+  height: 46px;
+  font-size: 13px;
+}
+
+.exhibitor-index .placeholder-image {
+  width: 84px;
+  height: 42px;
+  min-height: 0;
+  padding: 0;
+  border-radius: 8px;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.day-content {
+  padding-bottom: 26px;
+}
+
+.house-divider {
+  height: 36px;
+  background:
+    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent),
+    var(--lavender);
+  border-block: 3px solid #f5baff;
+  position: relative;
+}
+
+.house-divider::before {
+  content: "⌂   ⌂       ⌂   ⌂";
+  position: absolute;
+  inset: 0;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 28px;
+  line-height: 30px;
+  text-align: center;
+  letter-spacing: 22px;
+}
+
+.exhibitor-card {
+  padding: 0 0 18px;
+}
+
+.exhibitor-main-image,
+.placeholder-image {
+  width: 100%;
+  height: clamp(260px, 78vw, 560px);
+}
+
+.exhibitor-main-image {
+  object-fit: cover;
+}
+
+.placeholder-image {
+  display: grid;
+  place-items: center;
+  padding: 26px;
+  color: var(--brown);
+  background:
+    linear-gradient(135deg, rgba(255, 141, 204, 0.28), rgba(199, 251, 220, 0.7)),
+    repeating-linear-gradient(-28deg, transparent 0 30px, rgba(255, 255, 255, 0.45) 30px 32px);
+  font-weight: 800;
+  text-align: center;
+}
+
+.exhibitor-profile {
+  display: grid;
+  grid-template-columns: 64px 1fr 48px;
+  align-items: center;
+  gap: 14px;
+  width: min(100% - 36px, 620px);
+  margin: -2px auto 0;
+  padding: 14px 0;
+}
+
+.avatar,
+.avatar-placeholder {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+}
+
+.avatar {
+  object-fit: cover;
+}
+
+.avatar-placeholder {
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: var(--soft-pink);
+  font-weight: 800;
+}
+
+.profile-name {
+  margin: 0;
+  color: var(--brown);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.profile-name strong {
+  display: block;
+  font-size: 16px;
+}
+
+.profile-link {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: var(--soft-pink);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.day-bottom-action {
+  padding: 28px 0 48px;
+  text-align: center;
+}
+
+/* ---------- 画面が広い時の調整 ---------- */
+@media (min-width: 760px) {
+  .top-hero {
+    min-height: 760px;
+  }
+
+  .slide-track img {
+    width: 180px;
+    height: 100px;
+  }
+
+  .day-page {
+    width: min(100%, 760px);
+    margin: 0 auto;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04);
+  }
+
+  .exhibitor-main-image,
+  .placeholder-image {
+    height: 520px;
+  }
+}
+
+/* ---------- スマホの細い画面でも文字がはみ出さないようにする ---------- */
+@media (max-width: 430px) {
+  .inner {
+    width: min(100% - 30px, 960px);
+  }
+
+  .welcome {
+    padding-top: 62px;
+  }
+
+  .about-text {
+    font-size: 15px;
+  }
+
+  .staff-list {
+    font-size: 18px;
+  }
+
+  .exhibitor-index a {
+    grid-template-columns: 46px 1fr 74px;
+    gap: 8px;
+  }
+
+  .index-thumb {
+    width: 74px;
+    height: 38px;
+  }
+}
