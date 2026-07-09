@@ -61,13 +61,11 @@ a {
 /* ---------- 紙面風の共通背景 ---------- */
 .paper-bg {
   background-color: var(--cream);
-  background-image: repeating-linear-gradient(
-    -28deg,
-    rgba(244, 193, 102, 0.16) 0,
-    rgba(244, 193, 102, 0.16) 1px,
-    transparent 1px,
-    transparent 48px
-  );
+  background-image: repeating-linear-gradient(-28deg,
+      rgba(244, 193, 102, 0.16) 0,
+      rgba(244, 193, 102, 0.16) 1px,
+      transparent 1px,
+      transparent 48px);
   position: relative;
 }
 
@@ -87,7 +85,7 @@ a {
   overflow: hidden;
 }
 
-.paper-bg > * {
+.paper-bg>* {
   position: relative;
   z-index: 1;
 }
@@ -171,8 +169,8 @@ a {
   margin: 0 0 12px;
   color: var(--brown);
   font-size: clamp(16px, 4vw, 23px);
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-  }
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
 
 .hero-logo {
   width: min(82vw, 460px);
@@ -184,23 +182,23 @@ a {
   font-weight: 500;
   font-style: normal;
   font-size: 14px;
-    width: min(50vw, 200px);
-    margin: 0 auto 28px;
-    padding: 14px 24px;
+  width: min(50vw, 200px);
+  margin: 0 auto 28px;
+  padding: 14px 24px;
 
-    background: transparent;
-    border: 2px solid rgba(255,255,255,.8);
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, .8);
 
-    color: #fff;
-    line-height: 1.2;
+  color: #fff;
+  line-height: 1.2;
 
-    text-shadow: 2px 2px 4px rgb(0, 0, 0,0.5);
-    filter: drop-shadow(2px 2px 4px rgb(0, 0, 0,0.5));
+  text-shadow: 2px 2px 4px rgb(0, 0, 0, 0.5);
+  filter: drop-shadow(2px 2px 4px rgb(0, 0, 0, 0.5));
 
 }
 
 .scroll-hint {
-   position: absolute;
+  position: absolute;
   right: 24px;
   bottom: 24px;
 
@@ -213,9 +211,12 @@ a {
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(8px);
   }
@@ -257,44 +258,37 @@ a {
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-50%);
   }
 }
 
 /* ---------- ウェルカム文と概要 ---------- */
+
+
 .welcome {
-  padding: 80px 0 64px;
-  overflow: hidden;
+  width: 100%;
 }
 
-.garland {
-  height: 92px;
-  margin-bottom: 56px;
-  background:
-    url("../imgs/index/flagleft.svg") left top / 46% auto no-repeat,
-    url("../imgs/index/flagright.svg") right top / 46% auto no-repeat;
+.hero {
+  width: min(95vw, 700px);
+  margin: 0 auto;
 }
 
-.welcome-title {
-  color: var(--brown);
-  font-size: clamp(36px, 11vw, 76px);
-  line-height: 1.45;
-  text-align: center;
-  letter-spacing: 0;
-background:
-    url("../imgs/index/welcom01.svg") left top / 46% auto no-repeat,
-    url("../imgs/index/welcom02.svg") right top / 46% auto no-repeat;
-
+.hero img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-.town-arc {
-  height: 132px;
-  margin: 34px -40px 0;
-  background: url("../imgs/index/hero02.svg") center bottom / contain no-repeat;
-}
+
 
 .section-title {
+  font-family: "Alumni Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
   margin: 0 0 28px;
   color: var(--brown);
   line-height: 1.4;
@@ -303,15 +297,20 @@ background:
 
 .section-title span {
   display: block;
-  font-size: 18px;
-  font-weight: 800;
+  font-size: 24px;
+  font-weight: 500;
 }
 
 .section-title small {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 100;
+  font-style: normal;
   display: block;
-  font-size: 13px;
+  font-size: 20px;
   letter-spacing: 0.08em;
 }
+
+
 
 .about {
   padding: 58px 0 78px;
@@ -319,10 +318,13 @@ background:
 }
 
 .about-text {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   width: min(100%, 620px);
   margin: 0 auto;
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 18px;
+  line-height: 2.5;
   text-align: center;
 }
 
@@ -351,11 +353,13 @@ background:
 }
 
 .staff-list {
+   font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 300;
+  font-style: normal;
   list-style: none;
   margin: 26px 0 0;
   padding: 0;
   font-size: 22px;
-  font-weight: 800;
   line-height: 2.05;
 }
 
@@ -368,6 +372,10 @@ background:
 }
 
 .select-title {
+font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+
   margin: 0 0 34px;
   color: var(--brown);
   font-size: clamp(18px, 5vw, 28px);
