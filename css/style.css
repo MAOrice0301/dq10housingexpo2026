@@ -400,7 +400,7 @@ font-family: "Zen Maru Gothic", sans-serif;
 }
 
 .day-button:nth-child(1) {
-  background: var(--gray);
+  background: var(--red);
 }
 
 .day-button:nth-child(2) {
@@ -467,6 +467,9 @@ font-family: "Zen Maru Gothic", sans-serif;
 }
 
 .catalog-lead {
+   font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 500;
+  font-style: normal;
   margin: 0 0 28px;
   color: var(--brown);
   font-size: 13px;
@@ -502,7 +505,10 @@ font-family: "Zen Maru Gothic", sans-serif;
 }
 
 .index-text {
-  min-width: 0;
+   font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+    min-width: 0;
   color: var(--brown);
   font-size: 12px;
   font-weight: 800;
@@ -553,14 +559,14 @@ font-family: "Zen Maru Gothic", sans-serif;
 }
 
 .house-divider::before {
-  content: "⌂   ⌂       ⌂   ⌂";
+  content: "HOUSING EXPO 2026";
   position: absolute;
   inset: 0;
-  color: rgba(255, 255, 255, 0.92);
-  font-size: 28px;
+  color: rgba(236, 145, 252, 0.92);
+  font-size: 16px;
   line-height: 30px;
   text-align: center;
-  letter-spacing: 22px;
+  letter-spacing: 2px;
 }
 
 .exhibitor-card {
@@ -570,7 +576,8 @@ font-family: "Zen Maru Gothic", sans-serif;
 .exhibitor-main-image,
 .placeholder-image {
   width: 100%;
-  height: clamp(260px, 78vw, 560px);
+   aspect-ratio: 16 / 9;
+  height: auto;
 }
 
 .exhibitor-main-image {
@@ -619,9 +626,11 @@ font-family: "Zen Maru Gothic", sans-serif;
 }
 
 .profile-name {
-  margin: 0;
+   font-family: "Zen Maru Gothic", sans-serif;
+   font-style: normal;
+    margin: 0;
   color: var(--brown);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 800;
   line-height: 1.5;
 }
@@ -655,7 +664,9 @@ font-family: "Zen Maru Gothic", sans-serif;
   padding: 45% 0 58px;
 }
 
-
+html {
+  scroll-behavior: smooth;
+}
 
 /* ---------- 画面が広い時の調整 ---------- */
 @media (min-width: 760px) {
