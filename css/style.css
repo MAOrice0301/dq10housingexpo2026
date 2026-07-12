@@ -288,7 +288,7 @@ a {
 .section-title {
   font-family: "Alumni Sans", sans-serif;
   font-optical-sizing: auto;
-  font-weight: <weight>;
+  font-weight: 700;
   font-style: normal;
   margin: 0 0 28px;
   color: var(--brown);
@@ -298,7 +298,7 @@ a {
 
 .section-title span {
   display: block;
-  font-size: 24px;
+  font-size: 36px;
   font-weight: 500;
 }
 
@@ -361,7 +361,7 @@ a {
   margin: 26px 0 0;
   padding: 0;
   font-size: 22px;
-  line-height: 2.05;
+  line-height: 3;
 }
 
 /* =========================================================
