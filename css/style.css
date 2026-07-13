@@ -169,7 +169,7 @@ a {
   font-style: normal;
   margin: 0 0 12px;
   color: var(--brown);
-  font-size: clamp(16px, 4vw, 23px);
+  font-size: clamp(20px, 4vw, 23px);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -315,7 +315,7 @@ a {
 
 .about {
   padding: 58px 0 78px;
-  border-top: 4px solid #70ff74;
+  border-top: 12px solid #70ff74;
 }
 
 .about-text {
@@ -325,7 +325,7 @@ a {
   width: min(100%, 620px);
   margin: 0 auto;
   font-size: 18px;
-  line-height: 2.5;
+  line-height: 2;
   text-align: center;
 }
 
@@ -334,7 +334,7 @@ a {
 }
 
 .about-action {
-  margin-top: 26px;
+  margin-top: 40px;
   text-align: center;
 }
 
