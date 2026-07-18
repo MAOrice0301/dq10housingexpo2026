@@ -408,7 +408,7 @@ font-family: "Zen Maru Gothic", sans-serif;
 }
 
 .day-button:nth-child(3) {
-  background: var(--gray);
+  background: var(--green);
 }
 
 .day-button:nth-child(4) {
